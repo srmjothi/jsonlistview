@@ -1,4 +1,4 @@
-package com.example.jo265962.jsonlistview;
+package com.example.jo265962.jsonlistview.nework;
 
 import java.util.ArrayList;
 import java.util.List;

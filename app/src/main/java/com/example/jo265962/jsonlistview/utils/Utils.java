@@ -1,4 +1,4 @@
-package com.example.jo265962.jsonlistview;
+package com.example.jo265962.jsonlistview.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

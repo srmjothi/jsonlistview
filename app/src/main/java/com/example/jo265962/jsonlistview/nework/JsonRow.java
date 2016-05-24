@@ -1,4 +1,4 @@
-package com.example.jo265962.jsonlistview;
+package com.example.jo265962.jsonlistview.nework;
 
 /**
  * Created by JO265962 on 5/21/2016.

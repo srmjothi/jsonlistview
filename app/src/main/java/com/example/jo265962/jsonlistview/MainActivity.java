@@ -14,6 +14,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.jo265962.jsonlistview.adapter.ListJsonAdapter;
+import com.example.jo265962.jsonlistview.nework.JSONResponse;
+import com.example.jo265962.jsonlistview.nework.JsonRow;
+import com.example.jo265962.jsonlistview.nework.RequestInterface;
+import com.example.jo265962.jsonlistview.utils.Utils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,14 +37,15 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private SwipeRefreshLayout mSwipeRefresh;
     private ProgressDialog pDialog;
+    private int newconfig;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //Setting with Loading.., the title bar name to be set from Json
-        toolbar.setTitle("Loading...");
+        //Setting with blank.., the title bar name to be set from Json
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
         initViews();
@@ -77,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         Log.d("jsonlistview", "New Configuration : " + newConfig.orientation);
+        newconfig = newConfig.orientation;
     }
 
    private void dismissProgressDialogs() {
@@ -143,7 +151,19 @@ public class MainActivity extends AppCompatActivity {
             //Handle the OnRefresh to reload
             @Override
             public void onRefresh() {
-                    loadJSON();
+                Log.d("jsonlistview", "New Configuration : " + newconfig);
+                if (newconfig == 1) {
+                    if (Utils.isDataNetworkConnected(MainActivity.this)) {
+                        loadJSON();
+                    } else {
+                        Toast.makeText(MainActivity.this, "No Internet, Connect Internet", Toast.LENGTH_LONG).show();
+                        dismissProgressDialogs();
+                    }
+                } else {
+                    Toast.makeText(MainActivity.this, "No refresh during Horizontal", Toast.LENGTH_LONG).show();
+                    dismissProgressDialogs();
+
+                }
             }
         });
     }

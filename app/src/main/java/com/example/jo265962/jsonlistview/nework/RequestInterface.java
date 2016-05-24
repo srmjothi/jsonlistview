@@ -1,4 +1,4 @@
-package com.example.jo265962.jsonlistview;
+package com.example.jo265962.jsonlistview.nework;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

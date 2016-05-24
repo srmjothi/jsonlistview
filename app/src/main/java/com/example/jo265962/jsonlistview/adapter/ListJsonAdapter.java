@@ -1,4 +1,4 @@
-package com.example.jo265962.jsonlistview;
+package com.example.jo265962.jsonlistview.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.jo265962.jsonlistview.nework.JsonRow;
+import com.example.jo265962.jsonlistview.MainActivity;
+import com.example.jo265962.jsonlistview.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
